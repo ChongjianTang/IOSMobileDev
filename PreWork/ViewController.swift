@@ -24,6 +24,17 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var morePetsSwitch: UISwitch!
     
+    
+    @IBOutlet weak var ageTextField: UITextField!
+    
+    @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
+    
+    
+    @IBOutlet weak var habitsTextField: UITextField!
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -56,5 +67,27 @@ class ViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
         
     }
+    
+    @IBAction func changeBackgroundColorDidTapped(_ sender: UIButton) {
+        self.view.backgroundColor = UIColor.brown
+    }
+    
+    @IBAction func moreIntroducationDidTapped(_ sender: Any) {
+        let gender = genderSegmentedControl.titleForSegment(at: genderSegmentedControl.selectedSegmentIndex)
+        
+        let introduction = "I am a \(gender!) and I am \(ageTextField.text!) old and my habits are \(habitsTextField.text!)."
+        
+        let alertController = UIAlertController(title: "More Introducation", message: introduction, preferredStyle: .alert)
+        
+        // A way to dismiss the box once it pops up
+        let action = UIAlertAction(title: "Wish we can be friends!", style: .default, handler: nil)
+        
+        // Passing this action to the alert controller so it can be dismissed
+        alertController.addAction(action)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+        
+    
 }
 
